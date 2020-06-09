@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         buttonLogin = findViewById(R.id.buttonLogin);
         buttonPaginaCadastrar = findViewById(R.id.buttonPaginaCadastro);
         editTextTextEmail = findViewById(R.id.editTextTextEmail);
-        editTextTextPassword = findViewById(R.id.editTextTextEmail);
+        editTextTextPassword = findViewById(R.id.editTextTextPassword);
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 email = editTextTextEmail.getText().toString();
                 passwd = editTextTextPassword.getText().toString();
+
                 mAuth.signInWithEmailAndPassword(email,passwd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -62,11 +63,11 @@ public class MainActivity extends AppCompatActivity {
                             Toast.makeText(MainActivity.this, "User SIGNIN", Toast.LENGTH_LONG).show();
                             //Apos logar direciona para o catalogo de filmes
                             Intent intent = new Intent(MainActivity.this, MainCard.class);
-                            //startActivity(intent);
+                            startActivity(intent);
 
                         }else{
                             Log.w("MAIN", "SIGNINUserWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this,"Login ou senha incorretos ou problemas na conexão", Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this,email + passwd, Toast.LENGTH_LONG).show();
                         }
                     }
                 });
