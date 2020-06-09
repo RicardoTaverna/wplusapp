@@ -1,9 +1,5 @@
 package com.example.wplusapp;
 
-
-
-
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 public class MainCard extends AppCompatActivity {
+
     RecyclerView recyclerViewCards;
     RecyclerViewCardAdapter recyclerViewCardAdapter;
     @Override
