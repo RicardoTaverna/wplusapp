@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">WPlusApp</string>
+    <string name="todo">todo</string>
+    <string name="textviewcardtitle">textviewcardtitle</string>
+    <string name="textview">textview</string>
+    <string name="todo2">todo2</string>
+</resources>
