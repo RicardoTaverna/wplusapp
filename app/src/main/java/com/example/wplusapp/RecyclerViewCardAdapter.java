@@ -1,5 +1,6 @@
 package com.example.wplusapp;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,6 @@ public class RecyclerViewCardAdapter extends
             TextView textViewCardTitle;
             TextView textViewCardDetail;
 
-
             CardsViewHolder(View itemView){
                 super(itemView);
                 cardView = itemView.findViewById(R.id.cardView);
@@ -49,7 +49,6 @@ public class RecyclerViewCardAdapter extends
 
         }
 
-
         @Override
         public int getItemCount() {
             return Singleton.getInstance().cardDataList.size();
@@ -59,6 +58,7 @@ public class RecyclerViewCardAdapter extends
         @Override
         public CardsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item,parent,false);
+            inicializarFirebase(parent.getContext());
             return new CardsViewHolder(v);
         }
 
@@ -74,8 +74,8 @@ public class RecyclerViewCardAdapter extends
         public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
             super.onAttachedToRecyclerView(recyclerView);
         }
-        private void inicializarFirebase(){
-            FirebaseApp.initializeApp(RecyclerViewCardAdapter.this);
+        private void inicializarFirebase(Context context){
+            FirebaseApp.initializeApp(context);
             firebaseDatabase = FirebaseDatabase.getInstance();
             databaseReference = firebaseDatabase.getReference();
 
