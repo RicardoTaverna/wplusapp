@@ -1,12 +1,14 @@
 package com.example.wplusapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 
 public class MainCard extends AppCompatActivity {
@@ -16,7 +18,7 @@ public class MainCard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.maincard);
         recyclerViewCards = findViewById(R.id.recyclerViewCards);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
         recyclerViewCards.setLayoutManager(gridLayoutManager);
