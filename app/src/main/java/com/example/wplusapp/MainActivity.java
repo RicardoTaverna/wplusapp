@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
                         }else{
                             Log.w("MAIN", "SIGNINUserWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this,email + passwd, Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this,"Login ou Senha incorreta", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
