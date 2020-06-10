@@ -1,20 +1,33 @@
 package com.example.wplusapp;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class RecyclerViewCardAdapter extends
         RecyclerView.Adapter<RecyclerViewCardAdapter.CardsViewHolder> {
+        FirebaseDatabase firebaseDatabase;
+        DatabaseReference databaseReference;
+        private List<Catalogo> listCatalogo = new ArrayList<Catalogo>();
+        private ArrayAdapter<Catalogo> arrayAdapterCatalogo;
 
 
         public static class CardsViewHolder extends RecyclerView.ViewHolder{
@@ -22,6 +35,7 @@ public class RecyclerViewCardAdapter extends
             ImageView imageViewCard;
             TextView textViewCardTitle;
             TextView textViewCardDetail;
+
 
             CardsViewHolder(View itemView){
                 super(itemView);
@@ -60,4 +74,27 @@ public class RecyclerViewCardAdapter extends
         public void onAttachedToRecyclerView(@NonNull RecyclerView recyclerView) {
             super.onAttachedToRecyclerView(recyclerView);
         }
+        private void inicializarFirebase(){
+            FirebaseApp.initializeApp(RecyclerViewCardAdapter.this);
+            firebaseDatabase = FirebaseDatabase.getInstance();
+            databaseReference = firebaseDatabase.getReference();
+
+        }
+        private void eventoDatabase(){
+            databaseReference.child("Catalogo").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    listCatalogo.clear();
+                    for (DataSnapshot objSnapshot:dataSnapshot.getChildren()){
+                        Catalogo c = objSnapshot.getValue(Catalogo.class);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+
 }

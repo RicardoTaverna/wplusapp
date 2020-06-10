@@ -214,4 +214,8 @@ public class Catalogo {
     public void setImdbVotes(String imdbVotes) {
         this.imdbVotes = imdbVotes;
     }
+    public String toString(){
+        return Title;
+
+    }
 }
