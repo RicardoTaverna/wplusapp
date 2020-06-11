@@ -80,13 +80,14 @@ public class RecyclerViewCardAdapter extends
             databaseReference = firebaseDatabase.getReference();
 
         }
-        private void eventoDatabase(){
+        private void eventoDatabase(final RecyclerView recyclerView){
             databaseReference.child("Catalogo").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     listCatalogo.clear();
                     for (DataSnapshot objSnapshot:dataSnapshot.getChildren()){
                         Catalogo c = objSnapshot.getValue(Catalogo.class);
+                        //recyclerView.setAdapter();
                     }
                 }
 

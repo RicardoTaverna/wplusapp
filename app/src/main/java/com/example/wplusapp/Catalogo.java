@@ -6,7 +6,7 @@ public class Catalogo {
     private String Country;
     private String Director;
     private String Genre;
-    private String Images;
+    //private String Images;
     private String Language;
     private String Metascore;
     private String Plot;
@@ -23,6 +23,9 @@ public class Catalogo {
     private String imdbRating;
     private String imdbVotes;
 
+    public Catalogo(){}
+
+    /*
     public Catalogo(String actors, String awards, String country, String director, String genre, String images, String language, String metascore, String plot, String poster, String rated, String released, String response, String runtime, String title, String type, String write, String year, String imdbID, String imdbRating, String imdbVotes) {
         this.Actors = actors;
         this.Awards = awards;
@@ -46,6 +49,8 @@ public class Catalogo {
         this.imdbRating = imdbRating;
         this.imdbVotes = imdbVotes;
     }
+    */
+
 
     public String getActors() {
         return Actors;
@@ -86,7 +91,7 @@ public class Catalogo {
     public void setGenre(String genre) {
         this.Genre = genre;
     }
-
+/*
     public String getImages() {
         return Images;
     }
@@ -94,7 +99,7 @@ public class Catalogo {
     public void setImages(String images) {
         this.Images = images;
     }
-
+*/
     public String getLanguage() {
         return Language;
     }

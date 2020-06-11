@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                             currentUser = mAuth.getCurrentUser();
                             Toast.makeText(MainActivity.this, "User SIGNIN", Toast.LENGTH_LONG).show();
                             //Apos logar direciona para o catalogo de filmes
-                            Intent intent = new Intent(MainActivity.this, MainCard.class);
+                            Intent intent = new Intent(MainActivity.this, MainActivity3.class);
                             startActivity(intent);
 
                         }else{
