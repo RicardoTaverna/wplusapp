@@ -22,7 +22,6 @@ public class Catalogo {
     private String imdbID;
     private String imdbRating;
     private String imdbVotes;
-    private int uid;
 
     public Catalogo(){}
 
@@ -51,14 +50,6 @@ public class Catalogo {
         this.imdbVotes = imdbVotes;
     }
     */
-
-    public int getUid() {
-        return uid;
-    }
-
-    public void setUid(int uid) {
-        this.uid = uid;
-    }
 
     public String getActors() {
         return Actors;
@@ -227,6 +218,8 @@ public class Catalogo {
     public void setImdbVotes(String imdbVotes) {
         this.imdbVotes = imdbVotes;
     }
+
+    @Override
     public String toString(){
         return Title;
     }
