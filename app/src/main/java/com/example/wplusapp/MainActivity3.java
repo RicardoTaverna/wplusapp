@@ -45,7 +45,9 @@ public class MainActivity3 extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity3.this, MainActivity4.class);
+                intent.putExtra("id", position);
                 startActivity(intent);
+
             }
         });
 

@@ -22,6 +22,7 @@ public class Catalogo {
     private String imdbID;
     private String imdbRating;
     private String imdbVotes;
+    private int uid;
 
     public Catalogo(){}
 
@@ -51,6 +52,13 @@ public class Catalogo {
     }
     */
 
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
 
     public String getActors() {
         return Actors;
