@@ -221,6 +221,5 @@ public class Catalogo {
     }
     public String toString(){
         return Title;
-
     }
 }

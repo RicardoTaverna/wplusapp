@@ -3,7 +3,10 @@ package com.example.wplusapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -19,11 +22,14 @@ import java.util.List;
 
 public class MainActivity3 extends AppCompatActivity {
 
-    private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference databaseReference;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+
+    ListView listView;
+
     private List<Catalogo> listCatalogo = new ArrayList<Catalogo>();
     private ArrayAdapter<Catalogo> arrayAdapterCatalogo;
-    private ListView listView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +41,19 @@ public class MainActivity3 extends AppCompatActivity {
         inicializarFirebase();
         eventoDatabase();
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(MainActivity3.this, MainActivity4.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     private void eventoDatabase(){
-        databaseReference.child("catalogo").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Catalogo").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 listCatalogo.clear();
@@ -48,9 +63,9 @@ public class MainActivity3 extends AppCompatActivity {
                     listCatalogo.add(c);
 
                 }
-                arrayAdapterCatalogo = new ArrayAdapter<Catalogo>(MainActivity3.this,
-                        android.R.layout.simple_list_item_1,listCatalogo);
+                arrayAdapterCatalogo = new ArrayAdapter<Catalogo>(MainActivity3.this, android.R.layout.simple_list_item_1,listCatalogo);
                 listView.setAdapter(arrayAdapterCatalogo);
+
 
             }
 
@@ -68,4 +83,7 @@ public class MainActivity3 extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference();
 
     }
+
+
+
 }
